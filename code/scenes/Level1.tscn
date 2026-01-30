@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://3107qfva00sj"]
+
+[ext_resource type="PackedScene" uid="uid://bx27a5oo67ga6" path="res://scenes/water_player.tscn" id="2_bwv4p"]
+[ext_resource type="PackedScene" uid="uid://jeafcspxjgs8" path="res://scenes/fire_player.tscn" id="2_odhdn"]
+[ext_resource type="PackedScene" uid="uid://dwffnswp00njk" path="res://scenes/hazard.tscn" id="4_dw26h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dw26h"]
+size = Vector2(1977, 152.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_odhdn"]
+size = Vector2(1, 954)
+
+[node name="Level1" type="Node2D" unique_id=1924350674]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=910094992]
+position = Vector2(1, 430)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=815306278]
+position = Vector2(960.5, 590.75)
+shape = SubResource("RectangleShape2D_dw26h")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D" unique_id=1787290393]
+offset_left = -23.0
+offset_top = 513.0
+offset_right = 1935.0
+offset_bottom = 661.0
+color = Color(0.20312718, 0.14532796, 2.4065375e-08, 1)
+
+[node name="FirePlayer" parent="StaticBody2D" unique_id=1803650043 instance=ExtResource("2_odhdn")]
+position = Vector2(225, 449)
+
+[node name="WaterPlayer" parent="StaticBody2D" unique_id=1510148269 instance=ExtResource("2_bwv4p")]
+position = Vector2(76, 452)
+
+[node name="Hazard" parent="StaticBody2D" unique_id=1793680860 instance=ExtResource("4_dw26h")]
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=2036724305]
+
+[node name="Left" type="CollisionShape2D" parent="Walls" unique_id=1305219363]
+position = Vector2(0.5, 467)
+shape = SubResource("RectangleShape2D_odhdn")
+
+[node name="Right" type="CollisionShape2D" parent="Walls" unique_id=303010763]
+position = Vector2(1147, 467)
+shape = SubResource("RectangleShape2D_odhdn")
+
+[connection signal="body_entered" from="StaticBody2D/Hazard" to="StaticBody2D/Hazard" method="_on_body_entered"]
