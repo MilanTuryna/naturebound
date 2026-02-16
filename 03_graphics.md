@@ -1,5 +1,10 @@
 # 03 - Graphics
 
+**Využité nástroje:**
+- Photoshop (na samotný art) - samotný art
+- https://www.pixilart.com/ - inspirace/barvy
+- Gemini Pro 3 - nápad
+
 ## 1. Hlavní postavy (Characters)
 
 | Název assetu | Typ | Animace| Vizuální styl |
@@ -36,3 +41,4 @@
 | :--- | :--- | :--- |
 | **Menu Tlačítka** | UI | Start, Options, Exit. |
 | **Game Over Screen** | UI | Obrazovka při prohře. |
+
