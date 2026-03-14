@@ -1,4 +1,4 @@
-04 - Audio
+# 04 - Audio
 
 Pro odlišení od ostatních her a vytvoření autentičnosti této hry, bude k výslednému audiu využit primárně originálně natočený zvuk bez použití zvukových bank a externích programů. 
 Externí programy budou využity pouze jako nástroj pro zrychlení/zpomalení efektu, jeho opakování/prolínání v čase či střih, nikoliv jako nástroj pro tvorbu SFX.
