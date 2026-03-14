@@ -6,7 +6,7 @@ Naturebound is a **cooperative 2D puzzle-platformer game** about **elemental for
 - [01 - Basic concept](01_zakladni_koncepce.md)
 - [02 - Gamedesign](02_game_design.md)
 - [03 - Graphics](03_graphics.md)
-
+- [04 - Audio](04_audio.md)
 
 ## Development TO-DO
 
