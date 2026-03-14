@@ -5,7 +5,8 @@ Externí programy budou využity pouze jako nástroj pro zrychlení/zpomalení e
 
 ## Využité externí programy
 - Audacity - https://www.audacityteam.org/
-- Záznamník (interní záznamník zvuku v smartphonech Xiaomi)
+- Interní záznamník zvuku v smartphonech Xiaomi
+- Windows Hlasový záznam (https://apps.microsoft.com/detail/9wzdncrfhwkn; mikrofon Behringer C1-U)
 
 ## Terminologie
 
