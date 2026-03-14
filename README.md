@@ -40,6 +40,9 @@ Naturebound is a **cooperative 2D puzzle-platformer game** about **elemental for
 - [ ] Develop custom level editor  
 - [ ] Publish final build on web platform
 
+## Small changes
+- [ ] Standardize language through the documentation (use English not Czech)
+
 # Development info
 - Godot Engine 4.5.1
 
