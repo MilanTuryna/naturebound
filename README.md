@@ -2,15 +2,18 @@
 
 Naturebound is a **cooperative 2D puzzle-platformer game** about **elemental forces**. Each player have it's own elemental force and they must connect their strengths to overcome all obstacles and get through whole journey that will not be light.
 
+
+# Fast links
+
+<H1>PLAY GAME</h1>
+
 <a href="https://apps.turyna.eu/naturebound/game">
     <img src="/assets/logo/logo-with-border.jpeg" alt="logo"/>
 </a>
 
-# Fast links
-
-- https://www.youtube.com/watch?v=AlcH9uIvg34 - ukázka videa
-- https://apps.turyna.eu/naturebound/game - hra
-- https://apps.turyna.eu/naturebound - webová stránka
+- https://www.youtube.com/watch?v=AlcH9uIvg34 - game preview
+- https://apps.turyna.eu/naturebound/game - game
+- https://apps.turyna.eu/naturebound - webpage
 
 # Step-by-step documentation
 - [01 - Basic concept](01_zakladni_koncepce.md)
