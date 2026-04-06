@@ -1,12 +1,15 @@
 [gd_scene format=3 uid="uid://jeafcspxjgs8"]
 
 [ext_resource type="PackedScene" uid="uid://dtcbkqy05h4r" path="res://scenes/base_player.tscn" id="1_2nqpp"]
+[ext_resource type="Texture2D" uid="uid://5rjrri64vjwl" path="res://assets/fire.png" id="2_tex"]
 
-[node name="FirePlayer" unique_id=1510148269 instance=ExtResource("1_2nqpp")]
+[node name="FirePlayer" unique_id=1543444332 instance=ExtResource("1_2nqpp")]
+jump_velocity = -600.0
 input_left = "p1_left"
 input_right = "p1_right"
 input_jump = "p1_jump"
 element_type = "Fire"
 
-[node name="Sprite2D" parent="." index="0" unique_id=912073091]
-modulate = Color(0.9952175, 0, 0.45681214, 1)
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("2_tex")

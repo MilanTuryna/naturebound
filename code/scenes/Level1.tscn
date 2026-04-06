@@ -1,47 +1,224 @@
-[gd_scene format=3 uid="uid://3107qfva00sj"]
+[gd_scene load_steps=11 format=3 uid="uid://3107qfva00sj"]
 
-[ext_resource type="PackedScene" uid="uid://bx27a5oo67ga6" path="res://scenes/water_player.tscn" id="2_bwv4p"]
-[ext_resource type="PackedScene" uid="uid://jeafcspxjgs8" path="res://scenes/fire_player.tscn" id="2_odhdn"]
-[ext_resource type="PackedScene" uid="uid://dwffnswp00njk" path="res://scenes/hazard.tscn" id="4_dw26h"]
+[ext_resource type="PackedScene" path="res://scenes/water_player.tscn" id="1_water"]
+[ext_resource type="Script" path="res://scenes/level1.gd" id="1_lvl"]
+[ext_resource type="PackedScene" path="res://scenes/fire_player.tscn" id="2_fire"]
+[ext_resource type="PackedScene" path="res://scenes/hazard.tscn" id="3_hazard"]
+[ext_resource type="PackedScene" path="res://scenes/door.tscn" id="4_door"]
+[ext_resource type="PackedScene" path="res://scenes/button.tscn" id="5_btn"]
+[ext_resource type="PackedScene" path="res://scenes/goal.tscn" id="6_goal"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dw26h"]
-size = Vector2(1977, 152.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1"]
+size = Vector2(1920, 50)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_odhdn"]
-size = Vector2(1, 954)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f2"]
+size = Vector2(1400, 30)
 
-[node name="Level1" type="Node2D" unique_id=1924350674]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3"]
+size = Vector2(1600, 30)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=910094992]
-position = Vector2(1, 430)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall"]
+size = Vector2(50, 1080)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=815306278]
-position = Vector2(960.5, 590.75)
-shape = SubResource("RectangleShape2D_dw26h")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_plat"]
+size = Vector2(120, 20)
 
-[node name="ColorRect" type="ColorRect" parent="StaticBody2D" unique_id=1787290393]
-offset_left = -23.0
-offset_top = 513.0
-offset_right = 1935.0
-offset_bottom = 661.0
-color = Color(0.20312718, 0.14532796, 2.4065375e-08, 1)
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_lvl")
 
-[node name="FirePlayer" parent="StaticBody2D" unique_id=1803650043 instance=ExtResource("2_odhdn")]
-position = Vector2(225, 449)
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="WaterPlayer" parent="StaticBody2D" unique_id=1510148269 instance=ExtResource("2_bwv4p")]
-position = Vector2(76, 452)
+[node name="TimeLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 20.0
+offset_right = 100.0
+offset_bottom = 80.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "00:00:00"
+horizontal_alignment = 1
 
-[node name="Hazard" parent="StaticBody2D" unique_id=1793680860 instance=ExtResource("4_dw26h")]
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 540)
 
-[node name="Walls" type="StaticBody2D" parent="." unique_id=2036724305]
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.43, 0.65, 0.8, 1)
 
-[node name="Left" type="CollisionShape2D" parent="Walls" unique_id=1305219363]
-position = Vector2(0.5, 467)
-shape = SubResource("RectangleShape2D_odhdn")
+[node name="Walls" type="Node2D" parent="."]
 
-[node name="Right" type="CollisionShape2D" parent="Walls" unique_id=303010763]
-position = Vector2(1147, 467)
-shape = SubResource("RectangleShape2D_odhdn")
+[node name="LeftWall" type="StaticBody2D" parent="Walls"]
+position = Vector2(-25, 540)
 
-[connection signal="body_entered" from="StaticBody2D/Hazard" to="StaticBody2D/Hazard" method="_on_body_entered"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/LeftWall"]
+shape = SubResource("RectangleShape2D_wall")
+
+[node name="RightWall" type="StaticBody2D" parent="Walls"]
+position = Vector2(1945, 540)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RightWall"]
+shape = SubResource("RectangleShape2D_wall")
+
+[node name="Floor1" type="StaticBody2D" parent="."]
+position = Vector2(960, 1055)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor1"]
+shape = SubResource("RectangleShape2D_f1")
+
+[node name="ColorRect" type="ColorRect" parent="Floor1"]
+offset_left = -960.0
+offset_top = -25.0
+offset_right = 960.0
+offset_bottom = 25.0
+color = Color(0.2, 0.15, 0.05, 1)
+
+[node name="Floor2" type="StaticBody2D" parent="."]
+position = Vector2(900, 745)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor2"]
+shape = SubResource("RectangleShape2D_f2")
+
+[node name="ColorRect" type="ColorRect" parent="Floor2"]
+offset_left = -700.0
+offset_top = -15.0
+offset_right = 700.0
+offset_bottom = 15.0
+color = Color(0.2, 0.15, 0.05, 1)
+
+[node name="Floor3" type="StaticBody2D" parent="."]
+position = Vector2(1100, 445)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor3"]
+shape = SubResource("RectangleShape2D_f3")
+
+[node name="ColorRect" type="ColorRect" parent="Floor3"]
+offset_left = -800.0
+offset_top = -15.0
+offset_right = 800.0
+offset_bottom = 15.0
+color = Color(0.2, 0.15, 0.05, 1)
+
+[node name="Stairs" type="Node2D" parent="."]
+
+[node name="StairR1" type="StaticBody2D" parent="Stairs"]
+position = Vector2(1700, 940)
+
+[node name="Collision" type="CollisionShape2D" parent="Stairs/StairR1"]
+shape = SubResource("RectangleShape2D_plat")
+
+[node name="Color" type="ColorRect" parent="Stairs/StairR1"]
+offset_left = -60.0
+offset_top = -10.0
+offset_right = 60.0
+offset_bottom = 10.0
+color = Color(0.4, 0.3, 0.1, 1)
+
+[node name="StairR2" type="StaticBody2D" parent="Stairs"]
+position = Vector2(1850, 840)
+
+[node name="Collision" type="CollisionShape2D" parent="Stairs/StairR2"]
+shape = SubResource("RectangleShape2D_plat")
+
+[node name="Color" type="ColorRect" parent="Stairs/StairR2"]
+offset_left = -60.0
+offset_top = -10.0
+offset_right = 60.0
+offset_bottom = 10.0
+color = Color(0.4, 0.3, 0.1, 1)
+
+[node name="StairR3" type="StaticBody2D" parent="Stairs"]
+position = Vector2(1700, 740)
+
+[node name="Collision" type="CollisionShape2D" parent="Stairs/StairR3"]
+shape = SubResource("RectangleShape2D_plat")
+
+[node name="Color" type="ColorRect" parent="Stairs/StairR3"]
+offset_left = -60.0
+offset_top = -10.0
+offset_right = 60.0
+offset_bottom = 10.0
+color = Color(0.4, 0.3, 0.1, 1)
+
+[node name="StairL1" type="StaticBody2D" parent="Stairs"]
+position = Vector2(100, 640)
+
+[node name="Collision" type="CollisionShape2D" parent="Stairs/StairL1"]
+shape = SubResource("RectangleShape2D_plat")
+
+[node name="Color" type="ColorRect" parent="Stairs/StairL1"]
+offset_left = -60.0
+offset_top = -10.0
+offset_right = 60.0
+offset_bottom = 10.0
+color = Color(0.4, 0.3, 0.1, 1)
+
+[node name="StairL2" type="StaticBody2D" parent="Stairs"]
+position = Vector2(250, 540)
+
+[node name="Collision" type="CollisionShape2D" parent="Stairs/StairL2"]
+shape = SubResource("RectangleShape2D_plat")
+
+[node name="Color" type="ColorRect" parent="Stairs/StairL2"]
+offset_left = -60.0
+offset_top = -10.0
+offset_right = 60.0
+offset_bottom = 10.0
+color = Color(0.4, 0.3, 0.1, 1)
+
+[node name="StairL3" type="StaticBody2D" parent="Stairs"]
+position = Vector2(100, 440)
+
+[node name="Collision" type="CollisionShape2D" parent="Stairs/StairL3"]
+shape = SubResource("RectangleShape2D_plat")
+
+[node name="Color" type="ColorRect" parent="Stairs/StairL3"]
+offset_left = -60.0
+offset_top = -10.0
+offset_right = 60.0
+offset_bottom = 10.0
+color = Color(0.4, 0.3, 0.1, 1)
+
+[node name="FireHazard" parent="." instance=ExtResource("3_hazard")]
+position = Vector2(1000, 1015)
+scale = Vector2(1.5, 1)
+hazard_type = "Fire"
+
+[node name="WaterHazard" parent="." instance=ExtResource("3_hazard")]
+position = Vector2(800, 715)
+scale = Vector2(1.5, 1)
+hazard_type = "Water"
+
+[node name="AcidHazard" parent="." instance=ExtResource("3_hazard")]
+position = Vector2(1100, 415)
+scale = Vector2(1.5, 1)
+hazard_type = "Acid"
+
+[node name="Button1" parent="." instance=ExtResource("5_btn")]
+position = Vector2(1250, 430)
+
+[node name="Door" parent="." instance=ExtResource("4_door")]
+position = Vector2(1400, 430)
+
+[node name="Button2" parent="." instance=ExtResource("5_btn")]
+position = Vector2(1500, 430)
+
+[node name="GoalFire" parent="." instance=ExtResource("6_goal")]
+position = Vector2(1650, 430)
+door_element = "Fire"
+
+[node name="GoalWater" parent="." instance=ExtResource("6_goal")]
+position = Vector2(1780, 430)
+door_element = "Water"
+
+[node name="FirePlayer" parent="." instance=ExtResource("2_fire")]
+position = Vector2(200, 950)
+
+[node name="WaterPlayer" parent="." instance=ExtResource("1_water")]
+position = Vector2(400, 950)
+
+[connection signal="state_changed" from="Button1" to="Door" method="_on_button_state_changed"]
+[connection signal="state_changed" from="Button2" to="Door" method="_on_button_state_changed"]

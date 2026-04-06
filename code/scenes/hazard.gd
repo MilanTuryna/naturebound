@@ -1,11 +1,13 @@
 extends Area2D
 
-# Vybereme v editoru, co je tohle za jezírko
 @export_enum("Fire", "Water", "Acid") var hazard_type : String = "Acid"
 
+# Načtení zvuků přímo z tvé složky audio
+var fire_death_sound = preload("res://audio/fire-death.ogg")
+var water_death_sound = preload("res://audio/water-death.ogg")
+
 func _ready():
-	# Volitelné: Změna barvy podle typu automaticky (pro MVP)
-	var visual = $ColorRect # Ujisti se, že se node jmenuje ColorRect
+	var visual = $ColorRect
 	if visual:
 		match hazard_type:
 			"Fire": visual.color = Color.RED
@@ -13,29 +15,36 @@ func _ready():
 			"Acid": visual.color = Color.GREEN
 
 func _on_body_entered(body):
-	print("test")
-	# Ověříme, že do nás vlezl hráč (pomocí class_name BasePlayer)
 	if body is BasePlayer:
 		check_kill(body)
 
 func check_kill(player):
 	match hazard_type:
 		"Fire":
-			# Oheň zabíjí vodu (a neutrála, pokud chceš)
-			if player.element_type == "Water":
+			if player.get("element_type") == "Water":
 				die(player)
 		"Water":
-			# Voda zabíjí oheň
-			if player.element_type == "Fire":
+			if player.get("element_type") == "Fire":
 				die(player)
 		"Acid":
-			# Kyselina zabíjí všechno
 			die(player)
 
 func die(player):
 	print("Hráč zemřel: ", player.name)
-	# Restart aktuálního levelu
-	call_deferred("reload_level")
 
-func reload_level():
-	get_tree().reload_current_scene()
+	# Zastavíme hráče, aby po smrti už nepadal dál a nehýbal se
+	player.set_physics_process(false)
+
+	# Vybereme správný zvuk
+	if player.get("element_type") == "Fire":
+		$DeathSound.stream = fire_death_sound
+	elif player.get("element_type") == "Water":
+		$DeathSound.stream = water_death_sound
+
+	# Přehrajeme zvuk a počkáme, až skončí
+	if $DeathSound.stream != null:
+		$DeathSound.play()
+		await $DeathSound.finished
+
+	# Až zvuk dohraje, přepneme na Game Over obrazovku
+	get_tree().change_scene_to_file("res://scenes/game_over.tscn")

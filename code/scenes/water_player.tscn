@@ -1,12 +1,15 @@
 [gd_scene format=3 uid="uid://bx27a5oo67ga6"]
 
 [ext_resource type="PackedScene" uid="uid://dtcbkqy05h4r" path="res://scenes/base_player.tscn" id="1_61vr2"]
+[ext_resource type="Texture2D" uid="uid://dxmjnhjcfbo51" path="res://assets/water.png" id="2_tex"]
 
-[node name="WaterPlayer" unique_id=1510148269 instance=ExtResource("1_61vr2")]
+[node name="WaterPlayer" unique_id=2000167808 instance=ExtResource("1_61vr2")]
+jump_velocity = -600.0
 input_left = "p2_left"
 input_right = "p2_right"
 input_jump = "p2_jump"
 element_type = "Water"
 
-[node name="Sprite2D" parent="." index="0" unique_id=912073091]
-modulate = Color(0, 1, 1, 1)
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("2_tex")

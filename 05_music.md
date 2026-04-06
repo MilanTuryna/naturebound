@@ -2,6 +2,8 @@
 
 Cílem je vytvořit dynamický hudební podklad, které reaguje na psychologii hráče a aktuální stav herního světa.
 
+Pro dosavadní účely (než bude hudba tímto stylem vyhotovena) jsme použili hudbu vygenerovanou AI (Gemini Pro) do pozadí na základě promptu  `Vytvoř mi dungeon game music`
+
 ## Vize
 
 Hudba v Naturebound nebude jen kulisou, ale aktivním prvkem, který reflektuje napětí. Pokud hráč bude procházet lehkou pasáží, hudba bude uklidňující a atmosférická. Jakmile se zvýší obtížnost nebo se hráč dostane do stresové situace (např. těsně před vypršením limitu - či blízko nebezpečné situace), hudba začne gradovat.

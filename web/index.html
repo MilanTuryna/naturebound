@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="cs" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naturebound | Co-op Puzzle Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        fire: '#FF4500',
+                        fireDark: '#cc3700',
+                        water: '#00BFFF',
+                        waterDark: '#0099cc',
+                        nature: '#228B22',
+                        darkbg: '#0f172a',
+                        cardbg: '#1e293b'
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Drobné custom styly pro lepší efekty */
+        body { background-color: #0f172a; color: white; }
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden selection:bg-water selection:text-white">
+
+<nav class="fixed w-full z-50 glass-panel py-4 transition-all">
+    <div class="container mx-auto px-6 flex justify-between items-center">
+        <div class="text-2xl font-black tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-fire to-water">
+            NATUREBOUND
+        </div>
+        <div class="hidden md:flex space-x-8 font-medium">
+            <a href="#about" class="hover:text-water transition-colors">O hře</a>
+            <a href="#elements" class="hover:text-fire transition-colors">Živly</a>
+            <a href="#demo" class="hover:text-nature transition-colors">Demo</a>
+        </div>
+        <a href="game" class="px-5 py-2 bg-gradient-to-r from-fire to-water rounded-full font-bold hover:scale-105 transition-transform shadow-lg shadow-water/20">
+            Hrát hned
+        </a>
+    </div>
+</nav>
+
+<section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-fire/20 rounded-full blur-[120px] animate-pulse-slow"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-water/20 rounded-full blur-[120px] animate-pulse-slow" style="animation-delay: 1.5s;"></div>
+
+    <div class="container mx-auto px-6 z-10 flex flex-col md:flex-row items-center gap-12">
+        <div class="md:w-1/2 text-center md:text-left space-y-6">
+            <h1 class="text-5xl md:text-7xl font-black leading-tight">
+                Spojte síly.<br>
+                <span class="bg-gradient-to-r from-fire to-water text-gradient">Ovládněte přírodu.</span>
+            </h1>
+            <p class="text-xl text-gray-400 font-light">
+                Kooperativní pixel-art puzzle plošinovka, kde oheň a voda (a do budocuna další prvky) musí spolupracovat, aby přežili. Pokud jste měli rádi Fireboy & Watergirl, tuhle hru budete milovat!
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-4">
+                <a href="/game" class="px-8 py-4 bg-fire hover:bg-fireDark rounded-lg font-bold text-lg transition-all hover:-translate-y-1 shadow-[0_0_20px_rgba(255,69,0,0.4)] text-center">
+                    Vyzkoušet demo
+                </a>
+                <a href="https://discord.gg/vaHsMrXXJd" target="_blank" class="px-8 py-4 glass-panel rounded-lg font-bold text-lg hover:bg-white/10 transition-all text-center">
+                    Přidat se na Discord
+                </a>
+            </div>
+        </div>
+        <div class="md:w-1/2 flex justify-center">
+            <img src="logo-with-border.jpeg" alt="Naturebound Logo" class="w-full max-w-md rounded-2xl shadow-2xl shadow-black/50 hover:scale-105 transition-transform duration-500">
+        </div>
+    </div>
+</section>
+
+<section id="about" class="py-24 bg-cardbg/50">
+    <div class="container mx-auto px-6 text-center max-w-4xl">
+        <h2 class="text-4xl font-bold mb-6">Dva protiklady, jeden cíl</h2>
+        <p class="text-xl text-gray-300 leading-relaxed mb-12">
+            Žádnou úroveň nelze dokončit bez aktivní pomoci druhého elementu. Hrajte s kamarádem nebo přepínejte postavy a vyřešte prostorové rébusy.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-1 gap-8">
+            <div class="glass-panel p-6 rounded-xl">
+                <div class="text-3xl mb-4">🧩</div>
+                <h3 class="text-xl font-bold mb-2">Chytré hádanky</h3>
+                <p class="text-gray-400">Interagujte s prostředím a využívejte fyzikální zákony k postupu.</p>
+            </div>
+            <div class="glass-panel p-6 rounded-xl">
+                <div class="text-3xl mb-4">🤝</div>
+                <h3 class="text-xl font-bold mb-2">Lokální Co-op</h3>
+                <p class="text-gray-400">Sdílejte klávesnici a hrajte společně.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="elements" class="py-24 container mx-auto px-6">
+    <h2 class="text-4xl font-bold text-center mb-16">Seznamte se s živly</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+
+        <div class="relative group rounded-2xl overflow-hidden border-2 border-fire/30 hover:border-fire transition-colors bg-gradient-to-b from-cardbg to-black p-8 text-center">
+            <div class="absolute inset-0 bg-fire/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <h3 class="text-3xl font-black text-fire mb-4 relative z-10">OHEŇ</h3>
+            <div class="h-1 w-full bg-gradient-to-r from-transparent via-fire to-transparent"></div>
+        </div>
+
+        <div class="relative group rounded-2xl overflow-hidden border-2 border-water/30 hover:border-water transition-colors bg-gradient-to-b from-cardbg to-black p-8 text-center">
+            <div class="absolute inset-0 bg-water/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <h3 class="text-3xl font-black text-water mb-4 relative z-10">VODA</h3>
+            <div class="h-1 w-full bg-gradient-to-r from-transparent via-water to-transparent"></div>
+        </div>
+
+        <div class="relative rounded-2xl overflow-hidden border-2 border-gray-700 bg-gradient-to-b from-gray-900 to-black p-8 text-center opacity-50 grayscale cursor-not-allowed transition-all hover:opacity-60">
+            <div class="absolute top-4 right-4 text-xs font-bold bg-gray-800 text-gray-400 border border-gray-600 px-3 py-1 rounded-full uppercase tracking-widest">
+                Ve vývoji
+            </div>
+            <h3 class="text-3xl font-black text-gray-500 mb-4 relative z-10">ZEMĚ</h3>
+            <div class="h-1 w-full bg-gradient-to-r from-transparent via-gray-600 to-transparent"></div>
+        </div>
+
+        <div class="relative rounded-2xl overflow-hidden border-2 border-gray-700 bg-gradient-to-b from-gray-900 to-black p-8 text-center opacity-50 grayscale cursor-not-allowed transition-all hover:opacity-60">
+            <div class="absolute top-4 right-4 text-xs font-bold bg-gray-800 text-gray-400 border border-gray-600 px-3 py-1 rounded-full uppercase tracking-widest">
+                Ve vývoji
+            </div>
+            <h3 class="text-3xl font-black text-gray-500 mb-4 relative z-10">VZDUCH</h3>
+            <div class="h-1 w-full bg-gradient-to-r from-transparent via-gray-600 to-transparent"></div>
+        </div>
+
+    </div>
+</section>
+
+<footer class="bg-black py-12 border-t border-white/10">
+    <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="text-2xl font-black text-white opacity-50">NATUREBOUND</div>
+        <div class="text-gray-500 text-sm text-center md:text-left">
+            © 2026 Naturebound Game. Vytvořeno s vášní pro puzzle hry.
+        </div>
+        <div class="flex space-x-6">
+            <a href="https://discord.gg/vaHsMrXXJd"" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.445.865-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.618-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.676 4.37a.07.07 0 00-.032.028C.533 9.046-.32 13.58.099 18.058a.082.082 0 00.031.056 19.908 19.908 0 005.993 3.029.078.078 0 00.084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 00-.042-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128l.372-.291a.074.074 0 01.078-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01l.373.29a.077.077 0 01-.006.128 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.106c.36.698.772 1.363 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.031-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.029zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.419 0 1.333-.956 2.419-2.157 2.419zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.419 0 1.333-.946 2.419-2.157 2.419z"/>
+                </svg>
+            </a>
+            <a href="https://github.com/MilanTuryna/naturebound" class="text-gray-400 hover:text-white transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
