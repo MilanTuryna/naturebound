@@ -6,5 +6,5 @@ Tato hra ještě není kompletní z absolutního meřítka (chybí podstatný mu
 
 - [![Logo](/assets/logo/logo-with-border.jpeg "Logo")](assets/logo/logo-with-border.jpeg)
 - https://discord.gg/vaHsMrXXJd
-- https://turyna.eu/apps/naturebound - webová stránka
-- https://turyna.eu/apps/naturebound/game - hratelná verze
+- https://apps.turyna.eu/naturebound - webová stránka
+- https://apps.turyna.eu/naturebound/game - hratelná verze
